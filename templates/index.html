@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Age Detector</title>
+    <link rel="stylesheet" href="static\style.css">
+</head>
+<body style="background-image: url('templates/bg.png');">
+    <div class="navbar">
+        <a href="#">Age Detector</a>
+        <a href="#">Gender Detector</a>
+        <a href="#">Blog</a>
+        <a href="#">About Me</a>
+    </div>
+
+    <div class="main-container">
+        <div class="left-container">
+            <div class="image-box">
+                <video id="webcam" autoplay style="display: none;"></video>
+                <img id="uploadedImage" src="" alt="" style="display: none;">
+            </div>
+        </div>
+
+        <div class="right-container">
+            <div class="result-box" id="result">🔎 Result is here...</div>
+
+            <div class="buttons">
+
+                <input type="file" id="uploadInput" accept="image/*" style="display: none;">
+                <button class="btn upload-btn" onclick="document.getElementById('uploadInput').click();"><i class="fa-regular fa-face-smile"></i>Upload Photo</button>
+                <button class="btn camera-btn" onclick="startCamera()">Start Camera</button>
+                <button class="btn detect-btn" onclick="detectAgeGender()">Detect Age</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
