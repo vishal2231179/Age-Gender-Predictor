@@ -1,50 +1,3 @@
-# from flask import Flask, request, jsonify, render_template
-# import cv2
-# import numpy as np
-
-# app = Flask(__name__)
-
-# # Load Pre-trained Models
-# faceNet = cv2.dnn.readNet("models/opencv_face_detector_uint8.pb", "models/opencv_face_detector.pbtxt")
-# ageNet = cv2.dnn.readNet("models/age_net.caffemodel", "models/age_deploy.prototxt")
-# genderNet = cv2.dnn.readNet("models/gender_net.caffemodel", "models/gender_deploy.prototxt")
-
-# ageList = ['(0-2)', '(4-6)', '(8-12)', '(15-20)', '(25-32)', '(38-43)', '(48-53)', '(60-100)']
-# genderList = ['Male', 'Female']
-
-# @app.route('/')
-# def home():
-#     return render_template("index.html")
-
-# @app.route('/detect', methods=['POST'])
-# def detect():
-#     try:
-#         file = request.files['file']
-#         img = np.frombuffer(file.read(), np.uint8)
-#         frame = cv2.imdecode(img, cv2.IMREAD_COLOR)
-
-#         blob = cv2.dnn.blobFromImage(frame, 1.0, (300, 300), [104, 117, 123], True, False)
-#         faceNet.setInput(blob)
-#         detections = faceNet.forward()
-
-#         if len(detections) == 0:
-#             return jsonify({"error": "No face detected!"})
-
-#         genderNet.setInput(blob)
-#         genderPreds = genderNet.forward()
-#         gender = genderList[genderPreds[0].argmax()]
-
-#         ageNet.setInput(blob)
-#         agePreds = ageNet.forward()
-#         age = ageList[agePreds[0].argmax()][1:-1]
-
-#         return jsonify({"gender": gender, "age": age})
-
-#     except Exception as e:
-#         return jsonify({"error": str(e)})
-
-# if __name__ == '__main__':
-#     app.run(debug=True)
 from flask import Flask, request, jsonify, render_template
 import cv2
 import numpy as np
@@ -132,4 +85,3 @@ def detect():
 
 if __name__ == '__main__':
     app.run(debug=True)
-
